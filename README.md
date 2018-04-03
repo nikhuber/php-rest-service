@@ -17,8 +17,11 @@ After that, you should be able to access the service API at `http://localhost:80
 ## Implementation
 
 - Define entities
-- Create schema: `dc exec php php bin/console doctrine:schema:create`
+- Create schema: `docker-compose exec php php bin/console doctrine:schema:create`
 
 ## Tips:
-    php bin/console cache:clear
-    php bin/console debug:router
+
+The following commands might help you resolving issues.
+    
+    docker-compose exec php php bin/console cache:clear
+    docker-compose exec php php bin/console debug:router
