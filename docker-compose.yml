@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+    db: # Don't use this in production
+        image: mysql
+        volumes:
+            - "./.data/db:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    php:
+        build:
+            context: ./docker/php7-fpm
+            args:
+                TIMEZONE: ${TIMEZONE}
+        volumes:
+            # PHP needs full app folder
+            - ./${SERVICE_ROOT_PATH}:/srv/service
+    nginx:
+        build: ./docker/nginx
+        ports:
+            - 8080:80
+        volumes:
+            - ${SERVICE_ROOT_PATH}/public:/srv/service/public:ro
+            # This volume is mounted because the apiplatform path is a symlink
+            # How to handle this in PROD?
+            - ${SERVICE_ROOT_PATH}/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Resources/public/:/srv/service/public/bundles/apiplatform:ro

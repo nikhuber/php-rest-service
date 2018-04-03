@@ -1,0 +1,7 @@
+**/logs
+**/.data
+**/.env
+
+# IDE
+**/.idea
+
