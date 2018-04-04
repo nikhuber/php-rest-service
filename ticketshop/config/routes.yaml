@@ -1,3 +1,11 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+ticket_dto:
+    path: '/tickets'
+    methods:  ['GET']
+    defaults:
+        _controller: '\App\Controller\TicketRestController::specialAction'
+        _api_resource_class: 'App\Entity\TicketDto'
+        _api_item_operation_name: 'dto'
