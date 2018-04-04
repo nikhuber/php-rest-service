@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
-echo "Please enter a name for your service, e.g. offer-service"
-read serviceName
+if [ -z "$1" ]
+  then
+    echo "Please provide a name for your service, e.g. ./initProject.sh offer-service"
+    exit
+fi
+
+serviceName=$1
 
 echo "### Installting symfony skeleton"
-docker run --rm -v $(pwd):/app composer create-project symfony/skeleton  ${serviceName}
+docker run --rm -v $(pwd):/app composer create-project symfony/skeleton ${serviceName}
 
 echo "### Installting api-platform"
 docker run --rm -v $(pwd)/${serviceName}:/app composer composer req api

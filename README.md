@@ -6,7 +6,7 @@ This is a project you can use as a template to create and run a new service writ
 
 ## Project Initialization
 
-1. Execute the init-script in the root folder. Enter the name of the service, e.g. `ticketshop`
+1. Execute the init-script in the root folder and pass it the service name, e.g. `./initProject.sh ticketshop`
 2. Adjust the .env file in the project root to your needs
 3. Adjust the .env file in your app path (e.g., `./ticketshop`) 
 4. Build the Docker images `docker-compose build`
