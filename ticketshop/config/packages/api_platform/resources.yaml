@@ -1,0 +1,11 @@
+resources:
+    App\Dto\TicketDto:
+        itemOperations:
+            get:
+                method: 'GET'
+                path: '/ticket/{id}'
+        collectionOperations:
+            post:
+                method: 'POST'
+                path: '/ticket'
+                controller: 'App\Controller\TicketDtoController'
