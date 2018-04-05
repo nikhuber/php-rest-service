@@ -1,7 +1,7 @@
 api_platform:
     mapping:
         paths:
-        - '%kernel.project_dir%/config/packages/api_platform/resources.yaml'
+        - '%kernel.project_dir%/src/Entity'
     # The list of enabled formats. The first one will be the default.
     formats:
         # Disabled json-ld to avoid coupling on data structures

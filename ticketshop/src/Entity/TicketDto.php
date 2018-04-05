@@ -7,11 +7,21 @@
  */
 declare(strict_types=1);
 
-namespace App\Dto;
+namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Controller\TicketDtoController;
 
+
+/**
+ * ...
+ * @ApiResource(
+ *     collectionOperations={"post"={"method"="POST", "path"="/ticket", "controller"=TicketDtoController::class}},
+ *     itemOperations={"get"}
+ *     )
+ */
 class TicketDto
 {
     /**

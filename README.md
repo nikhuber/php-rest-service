@@ -25,3 +25,6 @@ The following commands might help you resolving issues.
     
     docker-compose exec php bin/console cache:clear
     docker-compose exec php bin/console debug:router
+    
+Hints:
+- At least one GET operation per resource https://github.com/api-platform/core/issues/640

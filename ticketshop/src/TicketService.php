@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Dto\TicketDto;
+use App\Entity\TicketDto;
 use App\Entity\Ticket;
 use App\Repository\TicketRepositoryInterface;
 
