@@ -12,13 +12,11 @@ namespace App\Dto;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Controller\TicketDtoController;
-
 
 /**
  * ...
  * @ApiResource(
- *     collectionOperations={"post"={"method"="POST", "path"="/ticket", "controller"=TicketDtoController::class}},
+ *     collectionOperations={"post"={"method"="POST", "path"="/ticket", "controller"="App\Controller\TicketDtoController::create"}},
  *     itemOperations={"get"}
  *     )
  */

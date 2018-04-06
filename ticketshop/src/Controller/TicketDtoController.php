@@ -7,13 +7,14 @@
  */
 declare(strict_types=1);
 
-
 namespace App\Controller;
 
 use App\Dto\TicketDto;
 use App\TicketService;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class TicketDtoController
+class TicketDtoController extends Controller
+
 {
 
     private $ticketService;
@@ -23,7 +24,7 @@ class TicketDtoController
         $this->ticketService = $ticketService;
     }
 
-    public function __invoke(TicketDto $data): TicketDto
+    public function create(TicketDto $data): TicketDto
     {
         $ticketDto = $this->ticketService->createTicket($data);
         return $ticketDto;
