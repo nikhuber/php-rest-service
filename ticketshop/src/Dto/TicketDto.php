@@ -16,8 +16,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ...
  * @ApiResource(
- *     collectionOperations={"post"={"method"="POST", "path"="/ticket", "controller"="App\Controller\TicketController::create"}},
- *     itemOperations={"get"}
+ *      collectionOperations={
+ *          "post"={
+ *              "method"="POST",
+ *              "path"="/ticket",
+ *              "controller"="App\Controller\TicketController::create"},
+ *          "get"={
+ *              "method"="GET",
+ *              "path"="/tickets",
+ *              "controller"="App\Controller\TicketController::getAll"}
+ *      },
+ *      itemOperations={}
  *     )
  */
 class TicketDto

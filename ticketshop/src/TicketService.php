@@ -36,4 +36,8 @@ class TicketService
         return $ticketDto;
     }
 
+    public function getAll()
+    {
+        return $this->ticketRepository->findAll();
+    }
 }

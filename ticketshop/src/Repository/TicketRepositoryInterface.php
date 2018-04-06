@@ -13,4 +13,6 @@ use App\Entity\Ticket;
 interface TicketRepositoryInterface
 {
     public function save(Ticket $ticket);
+
+    public function findAll();
 }

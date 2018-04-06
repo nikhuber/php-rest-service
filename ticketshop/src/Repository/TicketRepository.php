@@ -15,16 +15,30 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class TicketRepository implements TicketRepositoryInterface
 {
-    protected $em;
+    private $em;
+    private $ticketRepository;
+
+    private const CLASS_NAME_TICKET = 'App\Entity\Ticket';
 
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
+        $this->ticketRepository=$this->em->getRepository(self::CLASS_NAME_TICKET);
     }
 
     public function save(Ticket $ticket)
     {
         $this->em->persist($ticket);
         $this->em->flush();
+    }
+
+    /**
+     * Finds all tickets in the repository.
+     *
+     * @return array All tickets.
+     */
+    public function findAll()
+    {
+       return $this->ticketRepository->findAll();
     }
 }

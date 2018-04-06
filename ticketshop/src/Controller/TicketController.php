@@ -14,7 +14,6 @@ use App\TicketService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TicketController extends Controller
-
 {
 
     private $ticketService;
@@ -28,6 +27,11 @@ class TicketController extends Controller
     {
         $ticketDto = $this->ticketService->createTicket($data);
         return $ticketDto;
+    }
+
+    public function getAll()
+    {
+        return $this->ticketService->getAll();
     }
 
 }
