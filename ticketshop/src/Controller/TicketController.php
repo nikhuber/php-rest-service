@@ -13,7 +13,7 @@ use App\Dto\TicketDto;
 use App\TicketService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class TicketDtoController extends Controller
+class TicketController extends Controller
 
 {
 
