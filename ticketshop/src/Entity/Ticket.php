@@ -31,20 +31,35 @@ class Ticket
     private $id;
 
     /**
-     * @var string Ticket code
-     *
-     * @ORM\Column
-     * @Assert\NotBlank
-     */
-    public $ticketCode = '';
-
-    /**
      * @var string Name of the ticket holder
      *
      * @ORM\Column
      * @Assert\NotBlank
      */
     public $ticketHolderName = '';
+
+    /**
+     * @var int ID of the event
+     *
+     * @ORM\Column(type="bigint")
+     * @Assert\NotBlank
+     */
+    public $eventId;
+
+    /**
+     * @var string Name of the event
+     *
+     * @ORM\Column
+     */
+    public $eventName;
+
+    /**
+     * @var int Ticket code printed on the ticket and evaluated by scanners
+     *
+     * @ORM\Column(type="bigint")
+     * @Assert\NotBlank
+     */
+    public $ticketCode;
 
     public function getId(): string
     {

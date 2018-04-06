@@ -27,12 +27,15 @@ class TicketService
     {
         // Create new ticket entity and map Dto
         $ticket = new Ticket();
-        $ticket->ticketCode = $ticketDto->getTicketId();
+        $ticket->ticketCode = self::generateTicketCode();
         $ticket->ticketHolderName = $ticketDto->getTicketHolderName();
+        $ticket->eventId = $ticketDto->getEventId();
+        $ticket->eventName = $ticketDto->getEventName();
         // Persist entity
         $this->ticketRepository->save($ticket);
         // Return Dto with Id
         $ticketDto->setTicketId($ticket->getId());
+        $ticketDto->setTicketCode($ticket->ticketCode);
         return $ticketDto;
     }
 
@@ -45,8 +48,17 @@ class TicketService
     {
         $ticket = $this->ticketRepository->findBy($id);
         $ticketDto = new TicketDto();
-        $ticketDto->setTicketId($ticket->ticketCode);
+        $ticketDto->setTicketId($ticket->getId());
+        $ticketDto->setTicketCode($ticket->ticketCode);
         $ticketDto->setTicketHolderName($ticket->ticketHolderName);
+        $ticketDto->setEventId($ticket->eventId);
+        $ticketDto->setEventName($ticket->eventName);
         return $ticketDto;
+    }
+
+    public function generateTicketCode(): int
+    {
+        // Implement some fancy generation algorithm here
+        return rand(100000,999999);
     }
 }

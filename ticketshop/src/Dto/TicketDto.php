@@ -48,13 +48,80 @@ class TicketDto
      */
     private $ticketId;
 
-
     /**
      * @var string Full name of the ticket holder
      *
      * @Assert\NotBlank()
      */
     private $ticketHolderName;
+
+    /**
+     * @var int ID of the event
+     *
+     * @Assert\NotBlank
+     */
+    public $eventId;
+
+    /**
+     * @var string Name of the event
+     *
+     */
+    public $eventName;
+
+    /**
+     * @var int Ticket code printed on the ticket and evaluated by scanners
+     *
+     * @Assert\NotBlank
+     */
+    public $ticketCode;
+
+    /**
+     * @return int
+     */
+    public function getEventId(): int
+    {
+        return $this->eventId;
+    }
+
+    /**
+     * @param int $eventId
+     */
+    public function setEventId(int $eventId): void
+    {
+        $this->eventId = $eventId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEventName(): string
+    {
+        return $this->eventName;
+    }
+
+    /**
+     * @param string $eventName
+     */
+    public function setEventName(string $eventName): void
+    {
+        $this->eventName = $eventName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTicketCode(): int
+    {
+        return $this->ticketCode;
+    }
+
+    /**
+     * @param int $ticketCode
+     */
+    public function setTicketCode(int $ticketCode): void
+    {
+        $this->ticketCode = $ticketCode;
+    }
 
     /**
      * @return string
@@ -67,11 +134,10 @@ class TicketDto
     /**
      * @param string $ticketId
      */
-    public function setTicketId(string $ticketId)
+    public function setTicketId($ticketId)
     {
         $this->ticketId = $ticketId;
     }
-
 
     /**
      * @return string
