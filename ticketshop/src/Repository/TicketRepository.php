@@ -23,7 +23,7 @@ class TicketRepository implements TicketRepositoryInterface
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
-        $this->ticketRepository=$this->em->getRepository(self::CLASS_NAME_TICKET);
+        $this->ticketRepository = $this->em->getRepository(self::CLASS_NAME_TICKET);
     }
 
     public function save(Ticket $ticket)
@@ -40,5 +40,11 @@ class TicketRepository implements TicketRepositoryInterface
     public function findAll()
     {
        return $this->ticketRepository->findAll();
+    }
+
+    public function findBy(String $id): Ticket
+    {
+        $ticket = $this->ticketRepository->find($id);
+        return $ticket;
     }
 }

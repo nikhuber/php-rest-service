@@ -34,4 +34,9 @@ class TicketController extends Controller
         return $this->ticketService->getAll();
     }
 
+    public function getTicketById(String $id): TicketDto
+    {
+        return $this->ticketService->getTicketById($id);
+    }
+
 }

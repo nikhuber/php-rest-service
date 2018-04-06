@@ -20,13 +20,22 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "post"={
  *              "method"="POST",
  *              "path"="/ticket",
- *              "controller"="App\Controller\TicketController::create"},
+ *              "controller"="App\Controller\TicketController::create"
+ *          },
  *          "get"={
  *              "method"="GET",
  *              "path"="/tickets",
- *              "controller"="App\Controller\TicketController::getAll"}
+ *              "controller"="App\Controller\TicketController::getAll"
+ *          }
  *      },
- *      itemOperations={}
+ *      itemOperations={
+ *          "get"={
+ *              "method"="GET",
+ *              "path"="/tickets/{id}",
+ *              "controller"="App\Controller\TicketController::getTicketById",
+ *              "defaults"={"_api_receive"=false}
+ *          }
+ *      }
  *     )
  */
 class TicketDto

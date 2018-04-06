@@ -40,4 +40,13 @@ class TicketService
     {
         return $this->ticketRepository->findAll();
     }
+
+    public function getTicketById(String $id): TicketDto
+    {
+        $ticket = $this->ticketRepository->findBy($id);
+        $ticketDto = new TicketDto();
+        $ticketDto->setTicketId($ticket->ticketCode);
+        $ticketDto->setTicketHolderName($ticket->ticketHolderName);
+        return $ticketDto;
+    }
 }
