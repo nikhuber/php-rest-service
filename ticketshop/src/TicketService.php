@@ -16,11 +16,11 @@ use App\Repository\TicketRepositoryInterface;
 class TicketService
 {
 
-    protected $ticketRepsotiroy;
+    protected $ticketRepository;
 
     public function __construct(TicketRepositoryInterface $ticketRepository)
     {
-        $this->ticketRepsotiroy = $ticketRepository;
+        $this->ticketRepository = $ticketRepository;
     }
 
     public function createTicket(TicketDto $ticketDto): TicketDto
@@ -30,7 +30,7 @@ class TicketService
         $ticket->ticketCode = $ticketDto->getTicketId();
         $ticket->ticketHolderName = $ticketDto->getTicketHolderName();
         // Persist entity
-        $this->ticketRepsotiroy->save($ticket);
+        $this->ticketRepository->save($ticket);
         // Return Dto with Id
         $ticketDto->setTicketId($ticket->getId());
         return $ticketDto;
