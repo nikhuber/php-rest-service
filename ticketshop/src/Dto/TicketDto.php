@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Dto;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
