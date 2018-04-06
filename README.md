@@ -19,6 +19,8 @@ After that, you should be able to access the service API at `http://localhost:80
 - Define entities
 - Create schema: `docker-compose exec php bin/console doctrine:schema:create`
 
+- Optional: install AutoMapper: `docker run --rm -v $(pwd):/app composer composer require mark-gerarts/automapper-plus-bundle`
+
 ## Tips:
 
 The following commands might help you resolving issues.

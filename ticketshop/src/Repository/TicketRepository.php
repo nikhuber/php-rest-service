@@ -18,12 +18,10 @@ class TicketRepository implements TicketRepositoryInterface
     private $em;
     private $ticketRepository;
 
-    private const CLASS_NAME_TICKET = 'App\Entity\Ticket';
-
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
-        $this->ticketRepository = $this->em->getRepository(self::CLASS_NAME_TICKET);
+        $this->ticketRepository = $this->em->getRepository(Ticket::class);
     }
 
     public function save(Ticket $ticket)

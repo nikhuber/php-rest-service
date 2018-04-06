@@ -12,30 +12,39 @@ namespace App;
 use App\Dto\TicketDto;
 use App\Entity\Ticket;
 use App\Repository\TicketRepositoryInterface;
+use AutoMapperPlus\Configuration\AutoMapperConfig;
+use AutoMapperPlus\AutoMapper;
+use AutoMapperPlus\MappingOperation\Operation;
 
 class TicketService
 {
 
-    protected $ticketRepository;
+    private $autoMapper;
+    private $ticketRepository;
 
     public function __construct(TicketRepositoryInterface $ticketRepository)
     {
         $this->ticketRepository = $ticketRepository;
+        $config = new AutoMapperConfig();
+
+        $config
+            ->registerMapping(Ticket::class, TicketDto::class)
+            ->forMember('ticketId', Operation::fromProperty('id'))
+            ->reverseMap()
+            ->forMember('id', Operation::fromProperty('ticketId'));
+        $this->autoMapper = new AutoMapper($config);
+
     }
 
     public function createTicket(TicketDto $ticketDto): TicketDto
     {
         // Create new ticket entity and map Dto
-        $ticket = new Ticket();
-        $ticket->ticketCode = self::generateTicketCode();
-        $ticket->ticketHolderName = $ticketDto->getTicketHolderName();
-        $ticket->eventId = $ticketDto->getEventId();
-        $ticket->eventName = $ticketDto->getEventName();
+        $ticket = $this->autoMapper->map($ticketDto, Ticket::class);
+        $ticket->setTicketCode($this->generateTicketCode());
         // Persist entity
         $this->ticketRepository->save($ticket);
-        // Return Dto with Id
-        $ticketDto->setTicketId($ticket->getId());
-        $ticketDto->setTicketCode($ticket->ticketCode);
+        // Convert back to DTO and return
+        $ticketDto = $this->autoMapper->map($ticket, TicketDto::class);
         return $ticketDto;
     }
 
@@ -47,12 +56,7 @@ class TicketService
     public function getTicketById(String $id): TicketDto
     {
         $ticket = $this->ticketRepository->findBy($id);
-        $ticketDto = new TicketDto();
-        $ticketDto->setTicketId($ticket->getId());
-        $ticketDto->setTicketCode($ticket->ticketCode);
-        $ticketDto->setTicketHolderName($ticket->ticketHolderName);
-        $ticketDto->setEventId($ticket->eventId);
-        $ticketDto->setEventName($ticket->eventName);
+        $ticketDto = $this->autoMapper->map($ticket, TicketDto::class);
         return $ticketDto;
     }
 

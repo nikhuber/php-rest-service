@@ -36,7 +36,7 @@ class Ticket
      * @ORM\Column
      * @Assert\NotBlank
      */
-    public $ticketHolderName = '';
+    private $ticketHolderName = '';
 
     /**
      * @var int ID of the event
@@ -44,14 +44,14 @@ class Ticket
      * @ORM\Column(type="bigint")
      * @Assert\NotBlank
      */
-    public $eventId;
+    private $eventId;
 
     /**
      * @var string Name of the event
      *
      * @ORM\Column
      */
-    public $eventName;
+    private $eventName;
 
     /**
      * @var int Ticket code printed on the ticket and evaluated by scanners
@@ -59,7 +59,71 @@ class Ticket
      * @ORM\Column(type="bigint")
      * @Assert\NotBlank
      */
-    public $ticketCode;
+    private $ticketCode;
+
+    /**
+     * @return int
+     */
+    public function getEventId(): int
+    {
+        return intval($this->eventId);
+    }
+
+    /**
+     * @param int $eventId
+     */
+    public function setEventId(int $eventId): void
+    {
+        $this->eventId = $eventId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEventName(): string
+    {
+        return $this->eventName;
+    }
+
+    /**
+     * @param string $eventName
+     */
+    public function setEventName(string $eventName): void
+    {
+        $this->eventName = $eventName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTicketCode(): int
+    {
+        return intval($this->ticketCode);
+    }
+
+    /**
+     * @param int $ticketCode
+     */
+    public function setTicketCode(int $ticketCode): void
+    {
+        $this->ticketCode = $ticketCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTicketHolderName(): string
+    {
+        return $this->ticketHolderName;
+    }
+
+    /**
+     * @param string $ticketHolderName
+     */
+    public function setTicketHolderName(string $ticketHolderName): void
+    {
+        $this->ticketHolderName = $ticketHolderName;
+    }
 
     public function getId(): string
     {

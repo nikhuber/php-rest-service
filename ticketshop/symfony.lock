@@ -59,6 +59,15 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "lstrojny/functional-php": {
+        "version": "1.7.0"
+    },
+    "mark-gerarts/auto-mapper-plus": {
+        "version": "1.1.1"
+    },
+    "mark-gerarts/automapper-plus-bundle": {
+        "version": "v1.0.2"
+    },
     "nelmio/cors-bundle": {
         "version": "1.5",
         "recipe": {

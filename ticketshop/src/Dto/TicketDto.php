@@ -60,27 +60,27 @@ class TicketDto
      *
      * @Assert\NotBlank
      */
-    public $eventId;
+    private $eventId;
 
     /**
      * @var string Name of the event
      *
      */
-    public $eventName;
+    private $eventName;
 
     /**
      * @var int Ticket code printed on the ticket and evaluated by scanners
      *
      * @Assert\NotBlank
      */
-    public $ticketCode;
+    private $ticketCode;
 
     /**
      * @return int
      */
     public function getEventId(): int
     {
-        return $this->eventId;
+        return intval($this->eventId);
     }
 
     /**
@@ -112,7 +112,7 @@ class TicketDto
      */
     public function getTicketCode(): int
     {
-        return $this->ticketCode;
+        return intval($this->ticketCode);
     }
 
     /**
