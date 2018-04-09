@@ -10,39 +10,26 @@ declare(strict_types=1);
 namespace App;
 
 use App\Dto\TicketDto;
-use App\Entity\Ticket;
 use App\Repository\TicketRepositoryInterface;
-use AutoMapperPlus\Configuration\AutoMapperConfig;
-use AutoMapperPlus\AutoMapper;
-use AutoMapperPlus\MappingOperation\Operation;
 
 class TicketService
 {
-
-    private $autoMapper;
+    private $ticketAutoMapper;
     private $ticketRepository;
 
-    public function __construct(TicketRepositoryInterface $ticketRepository)
+    public function __construct(TicketRepositoryInterface $ticketRepository, TicketAutoMapper $ticketAutoMapper)
     {
         $this->ticketRepository = $ticketRepository;
-        $config = new AutoMapperConfig();
-
-        $config
-            ->registerMapping(Ticket::class, TicketDto::class)
-            ->reverseMap();
-        $this->autoMapper = new AutoMapper($config);
-
+        $this->ticketAutoMapper = $ticketAutoMapper;
     }
 
     public function createTicket(TicketDto $ticketDto): TicketDto
     {
-        // Create new ticket entity and map Dto
-        $ticket = $this->autoMapper->map($ticketDto, Ticket::class);
+        $ticket = $this->ticketAutoMapper->getTicketEntity($ticketDto);
         $ticket->setTicketCode($this->generateTicketCode());
-        // Persist entity
         $this->ticketRepository->save($ticket);
-        // Convert back to DTO and return
-        $ticketDto = $this->autoMapper->map($ticket, TicketDto::class);
+
+        $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
         return $ticketDto;
     }
 
@@ -54,7 +41,7 @@ class TicketService
     public function getTicketById(String $id): TicketDto
     {
         $ticket = $this->ticketRepository->findBy($id);
-        $ticketDto = $this->autoMapper->map($ticket, TicketDto::class);
+        $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
         return $ticketDto;
     }
 
