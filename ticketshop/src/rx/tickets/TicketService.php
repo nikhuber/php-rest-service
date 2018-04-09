@@ -40,7 +40,7 @@ class TicketService
 
     public function getTicketById(String $id): TicketDto
     {
-        $ticket = $this->ticketRepository->findBy($id);
+        $ticket = $this->ticketRepository->findByTicketId($id);
         $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
         return $ticketDto;
     }

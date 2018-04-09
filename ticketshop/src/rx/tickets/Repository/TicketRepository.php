@@ -10,39 +10,33 @@ declare(strict_types=1);
 
 namespace Rx\Tickets\Repository;
 
-use Rx\Tickets\Entity\Ticket;
 use Doctrine\ORM\EntityManagerInterface;
+use Rx\Tickets\Entity\Ticket;
 
 class TicketRepository implements TicketRepositoryInterface
 {
-    private $em;
+    private $entityManager;
     private $ticketRepository;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->em = $em;
-        $this->ticketRepository = $this->em->getRepository(Ticket::class);
+        $this->entityManager = $entityManager;
+        $this->ticketRepository = $entityManager->getRepository(Ticket::class);
     }
 
     public function save(Ticket $ticket)
     {
-        $this->em->persist($ticket);
-        $this->em->flush();
+        $this->entityManager->persist($ticket);
+        $this->entityManager->flush();
     }
 
-    /**
-     * Finds all tickets in the repository.
-     *
-     * @return array All tickets.
-     */
     public function findAll()
     {
-       return $this->ticketRepository->findAll();
+        return $this->ticketRepository->findAll();
     }
 
-    public function findBy(String $id): Ticket
+    public function findByTicketId(String $id): Ticket
     {
-        $ticket = $this->ticketRepository->find($id);
-        return $ticket;
+        return $this->ticketRepository->find($id);
     }
 }
