@@ -11,32 +11,24 @@ declare(strict_types=1);
 namespace Rx\Tickets\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use Rx\Tickets\Entity\Ticket;
 
-class TicketRepository implements TicketRepositoryInterface
+class TicketRepository extends EntityRepository implements TicketRepositoryInterface
 {
-    private $entityManager;
-    private $ticketRepository;
-
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->entityManager = $entityManager;
-        $this->ticketRepository = $entityManager->getRepository(Ticket::class);
+        parent::__construct($entityManager, $entityManager->getClassMetadata(Ticket::class));
     }
 
     public function save(Ticket $ticket)
     {
-        $this->entityManager->persist($ticket);
-        $this->entityManager->flush();
-    }
-
-    public function findAll()
-    {
-        return $this->ticketRepository->findAll();
+        $this->getEntityManager()->persist($ticket);
+        $this->getEntityManager()->flush();
     }
 
     public function findByTicketId(String $id): Ticket
     {
-        return $this->ticketRepository->find($id);
+        return $this->find($id);
     }
 }
