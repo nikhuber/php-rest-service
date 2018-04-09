@@ -7,10 +7,10 @@
  */
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace Rx\Tickets\Controller;
 
-use App\Dto\TicketDto;
-use App\TicketService;
+use Rx\Tickets\Dto\TicketDto;
+use Rx\Tickets\TicketService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TicketController extends Controller

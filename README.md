@@ -14,6 +14,31 @@ This is a project you can use as a template to create and run a new service writ
     
 After that, you should be able to access the service API at `http://localhost:8080/api`
 
+## Custom Namepsace
+
+Maybe you want to use an individual namespace like `Rx\Tickets` for your classes instead of the default namespace `App`. 
+If you decide to use your own namespace, it is recommended to adhere to the [PSR-4 specification](https://www.php-fig.org/psr/psr-4/). 
+The setting in this example project is as follows:
+
+| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Resulting File Path
+| ----------------------------- |--------------------|--------------------------|-------------------------------------------
+| \Rx\Tickets\Entity\Ticket     | Rx\Tickets         | ./src/rx/tickets/        | ./src/rx/tickets/Entity/Ticket.php
+
+To achieve this, perform the following steps (the base path is you app directory, e.g. `ticketshop/` not your project root)
+1. Add your new base directory to the autoloader configuration in the `composer.json` in the root directory:
+
+        "autoload": {
+           "psr-4": {
+               "Rx\\Tickets\\": "src/rx/tickets/", 
+               "App\\": "src/"
+           }
+        }
+2. Update the autoloader `docker run --rm -v $(pwd)/ticketshop:/app composer dump-autoload`
+3. Adjust your `./config/services.yaml`. Replace `App`with your namepsace prefix, e.g. `Rx\Ticket` and point to the correct paths. 
+   See [services.yaml](./ticketshop/config/services.yaml) for examples.
+4. Adjust the path(s) in `./config/packages/api_platform.yaml` and `./config/routes/annotations.yaml`
+5. Adjust paths and prefixes in `./config/packages/doctrine.yaml`. See [doctrine.yaml](ticketshop/config/packages/doctrine.yaml) for examples.
+
 ## Implementation
 
 - Define entities

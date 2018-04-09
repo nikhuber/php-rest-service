@@ -7,10 +7,10 @@
  */
 declare(strict_types=1);
 
-namespace App;
+namespace Rx\Tickets;
 
-use App\Dto\TicketDto;
-use App\Repository\TicketRepositoryInterface;
+use Rx\Tickets\Dto\TicketDto;
+use Rx\Tickets\Repository\TicketRepositoryInterface;
 
 class TicketService
 {

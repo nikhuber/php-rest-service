@@ -8,9 +8,9 @@
 declare(strict_types=1);
 
 
-namespace App\Repository;
+namespace Rx\Tickets\Repository;
 
-use App\Entity\Ticket;
+use Rx\Tickets\Entity\Ticket;
 use Doctrine\ORM\EntityManagerInterface;
 
 class TicketRepository implements TicketRepositoryInterface

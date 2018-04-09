@@ -8,11 +8,10 @@
 declare(strict_types=1);
 
 
-namespace App;
+namespace Rx\Tickets;
 
-
-use App\Dto\TicketDto;
-use App\Entity\Ticket;
+use Rx\Tickets\Dto\TicketDto;
+use Rx\Tickets\Entity\Ticket;
 use AutoMapperPlus\Configuration\AutoMapperConfig;
 use AutoMapperPlus\AutoMapper;
 

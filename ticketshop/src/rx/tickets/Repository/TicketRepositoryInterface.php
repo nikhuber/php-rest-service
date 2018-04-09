@@ -6,9 +6,9 @@
  * Time: 11:20
  */
 
-namespace App\Repository;
+namespace Rx\Tickets\Repository;
 
-use App\Entity\Ticket;
+use Rx\Tickets\Entity\Ticket;
 
 interface TicketRepositoryInterface
 {
