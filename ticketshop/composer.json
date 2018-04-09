@@ -22,8 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Rx\\Tickets\\": "src/rx/tickets/",
-            "App\\": "src/"
+            "Rx\\Tickets\\": "src/rx/tickets/"
         }
     },
     "autoload-dev": {

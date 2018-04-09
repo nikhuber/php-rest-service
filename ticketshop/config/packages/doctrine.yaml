@@ -27,4 +27,3 @@ doctrine:
                 type: annotation
                 dir: '%kernel.project_dir%/src/rx/tickets/Entity'
                 prefix: 'Rx\Tickets\Entity'
-                alias: App
