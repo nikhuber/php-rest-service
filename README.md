@@ -44,9 +44,15 @@ To achieve this, perform the following steps (the base path is you app directory
 - Define entities
 - Create schema: `docker-compose exec php bin/console doctrine:schema:create`
 
+- Optional: install AutoMapper: `docker run --rm -v $(pwd):/app composer composer require mark-gerarts/automapper-plus-bundle`
+
 ## Tips:
 
 The following commands might help you resolving issues.
     
     docker-compose exec php bin/console cache:clear
     docker-compose exec php bin/console debug:router
+    
+# Hints:
+- At least one GET operation per resource https://github.com/api-platform/core/issues/640
+- disable default entity retrieval for DTOs

@@ -3,45 +3,61 @@
  * Created by PhpStorm.
  * User: nhuber
  * Date: 04.04.18
- * Time: 09:32
+ * Time: 14:27
  */
 declare(strict_types=1);
 
-namespace Rx\Tickets\Entity;
+namespace Rx\Tickets\Dto;
 
-use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * A ticket entity for testing.
- *
- * @ORM\Entity
- *
+ * ...
+ * @ApiResource(
+ *      collectionOperations={
+ *          "post"={
+ *              "method"="POST",
+ *              "path"="/ticket",
+ *              "controller"="Rx\Tickets\Controller\TicketController::create"
+ *          },
+ *          "get"={
+ *              "method"="GET",
+ *              "path"="/tickets",
+ *              "controller"="Rx\Tickets\Controller\TicketController::getAll"
+ *          }
+ *      },
+ *      itemOperations={
+ *          "get"={
+ *              "method"="GET",
+ *              "path"="/tickets/{id}",
+ *              "controller"="Rx\Tickets\Controller\TicketController::getTicketById",
+ *              "defaults"={"_api_receive"=false}
+ *          }
+ *      }
+ *     )
  */
-class Ticket
+class TicketDto
 {
-
     /**
-     * @var string A unique ticket code
+     * @var string Unique Identifier of the ticket
      *
-     * @ORM\Id
-     * @ORM\Column(type="guid")
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ApiProperty(identifier=true)
+     * @Assert\NotBlank()
      */
     private $ticketId;
 
     /**
-     * @var string Name of the ticket holder
+     * @var string Full name of the ticket holder
      *
-     * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      */
-    private $ticketHolderName = '';
+    private $ticketHolderName;
 
     /**
      * @var int ID of the event
      *
-     * @ORM\Column(type="integer")
      * @Assert\NotBlank
      */
     private $eventId;
@@ -49,14 +65,12 @@ class Ticket
     /**
      * @var string Name of the event
      *
-     * @ORM\Column
      */
     private $eventName;
 
     /**
      * @var int Ticket code printed on the ticket and evaluated by scanners
      *
-     * @ORM\Column(type="integer")
      * @Assert\NotBlank
      */
     private $ticketCode;
@@ -112,6 +126,22 @@ class Ticket
     /**
      * @return string
      */
+    public function getTicketId(): string
+    {
+        return $this->ticketId;
+    }
+
+    /**
+     * @param string $ticketId
+     */
+    public function setTicketId($ticketId)
+    {
+        $this->ticketId = $ticketId;
+    }
+
+    /**
+     * @return string
+     */
     public function getTicketHolderName(): string
     {
         return $this->ticketHolderName;
@@ -123,11 +153,6 @@ class Ticket
     public function setTicketHolderName(string $ticketHolderName): void
     {
         $this->ticketHolderName = $ticketHolderName;
-    }
-
-    public function getTicketId(): string
-    {
-        return $this->ticketId;
     }
 
 }

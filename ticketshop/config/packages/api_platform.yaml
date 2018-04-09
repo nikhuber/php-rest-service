@@ -1,6 +1,7 @@
 api_platform:
     mapping:
-        paths: ['%kernel.project_dir%/src/rx/tickets/Entity']
+        paths:
+        - '%kernel.project_dir%/src/rx/tickets/Dto'
     # The list of enabled formats. The first one will be the default.
     formats:
         # Disabled json-ld to avoid coupling on data structures
@@ -10,6 +11,13 @@ api_platform:
             mime_types: ['application/json']
         html:
             mime_types: ['text/html']
+    collection:
+        pagination:
+            enabled: false
+
+
+
+
 
 
 
