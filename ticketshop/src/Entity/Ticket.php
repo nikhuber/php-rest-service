@@ -41,7 +41,7 @@ class Ticket
     /**
      * @var int ID of the event
      *
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="integer")
      * @Assert\NotBlank
      */
     private $eventId;
@@ -56,7 +56,7 @@ class Ticket
     /**
      * @var int Ticket code printed on the ticket and evaluated by scanners
      *
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="integer")
      * @Assert\NotBlank
      */
     private $ticketCode;
@@ -66,7 +66,7 @@ class Ticket
      */
     public function getEventId(): int
     {
-        return intval($this->eventId);
+        return $this->eventId;
     }
 
     /**
@@ -98,7 +98,7 @@ class Ticket
      */
     public function getTicketCode(): int
     {
-        return intval($this->ticketCode);
+        return $this->ticketCode;
     }
 
     /**

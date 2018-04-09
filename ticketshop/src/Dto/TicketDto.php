@@ -80,7 +80,7 @@ class TicketDto
      */
     public function getEventId(): int
     {
-        return intval($this->eventId);
+        return $this->eventId;
     }
 
     /**
@@ -112,7 +112,7 @@ class TicketDto
      */
     public function getTicketCode(): int
     {
-        return intval($this->ticketCode);
+        return $this->ticketCode;
     }
 
     /**
