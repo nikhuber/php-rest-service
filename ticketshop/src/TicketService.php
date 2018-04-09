@@ -29,9 +29,7 @@ class TicketService
 
         $config
             ->registerMapping(Ticket::class, TicketDto::class)
-            ->forMember('ticketId', Operation::fromProperty('id'))
-            ->reverseMap()
-            ->forMember('id', Operation::fromProperty('ticketId'));
+            ->reverseMap();
         $this->autoMapper = new AutoMapper($config);
 
     }

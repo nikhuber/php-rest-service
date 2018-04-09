@@ -28,7 +28,7 @@ class Ticket
      * @ORM\Column(type="guid")
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    private $id;
+    private $ticketId;
 
     /**
      * @var string Name of the ticket holder
@@ -125,9 +125,9 @@ class Ticket
         $this->ticketHolderName = $ticketHolderName;
     }
 
-    public function getId(): string
+    public function getTicketId(): string
     {
-        return $this->id;
+        return $this->ticketId;
     }
 
 }
