@@ -8,12 +8,12 @@ fi
 
 serviceName=$1
 
-echo "### Installting symfony skeleton"
+echo "### Installing symfony skeleton"
 docker run --rm -v $(pwd):/app composer create-project symfony/skeleton ${serviceName}
 
-echo "### Installting api-platform"
+echo "### Installing api-platform"
 docker run --rm -v $(pwd)/${serviceName}:/app composer composer req api
 
-echo "### Perparing configuration"
+echo "### Preparing configuration"
 cp .env.dist .env
 sed -i'' -e s/SERVICE_ROOT_PATH=\./SERVICE_ROOT_PATH=\.\\/"${serviceName}"/g .env
