@@ -25,8 +25,7 @@ class TicketController extends Controller
 
     public function create(TicketDto $data): TicketDto
     {
-        $ticketDto = $this->ticketService->createTicket($data);
-        return $ticketDto;
+        return $this->ticketService->createTicket($data);
     }
 
     public function getAll()
