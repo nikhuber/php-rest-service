@@ -12,7 +12,10 @@ echo "### Installing symfony skeleton"
 docker run --rm -v $(pwd):/app composer create-project symfony/skeleton ${serviceName}
 
 echo "### Installing api-platform"
-docker run --rm -v $(pwd)/${serviceName}:/app composer composer req api
+docker run --rm -v $(pwd)/${serviceName}:/app composer composer require api-platform/api-pack
+
+echo "### Installing AutoMapper"
+docker run --rm -v $(pwd)/${serviceName}:/app composer composer require mark-gerarts/automapper-plus-bundle
 
 echo "### Preparing configuration"
 cp .env.dist .env

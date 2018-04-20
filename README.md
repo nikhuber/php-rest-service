@@ -4,7 +4,11 @@
 
 This is a project you can use as a template to create and run a new service written in PHP.
 
-## Project Initialization
+To execute the sample service, perform the following steps:
+* Clone the project
+* Copy the `.env.dist` files and ajust the .env
+
+## Project Initialization from Scratch
 
 1. Execute the init-script in the root folder and pass it the service name, e.g. `./initProject.sh ticketshop`
 2. Adjust the .env file in the project root to your needs
@@ -13,6 +17,8 @@ This is a project you can use as a template to create and run a new service writ
 5. Launch the service `docker-compose up -d`
     
 After that, you should be able to access the service API at `http://localhost:8080/api`
+
+Note: The init script installs the [AutoMapper+](https://github.com/mark-gerarts/automapper-plus-bundle) bundle.
 
 ## Custom Namepsace
 
@@ -46,11 +52,9 @@ Don't forget to adjust all namespaces and usages or other references in your sou
 - Define entities
 - Create schema: `docker-compose exec php bin/console doctrine:schema:create`
 
-- Optional: install AutoMapper: `docker run --rm -v $(pwd):/app composer composer require mark-gerarts/automapper-plus-bundle`
-
 ## Tips:
 
-The following commands might help you resolving issues.
+The following commands might help you to resolve issues:
     
     docker-compose exec php bin/console cache:clear
     docker-compose exec php bin/console debug:router
