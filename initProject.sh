@@ -14,6 +14,9 @@ docker run --rm -v $(pwd):/app composer create-project symfony/skeleton ${servic
 echo "### Installing api-platform"
 docker run --rm -v $(pwd)/${serviceName}:/app composer composer req api
 
+echo "### Installing AutoMapper"
+docker run --rm -v $(pwd)/${serviceName}:/app composer composer require mark-gerarts/automapper-plus-bundle
+
 echo "### Preparing configuration"
 cp .env.dist .env
 sed -i'' -e s/SERVICE_ROOT_PATH=\./SERVICE_ROOT_PATH=\.\\/"${serviceName}"/g .env
