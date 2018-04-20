@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Rx\Tickets;
 
-use Rx\Tickets\Dto\TicketDto;
-use Rx\Tickets\Entity\Ticket;
+use Rx\Tickets\Interfaces\Dto\TicketDto;
+use Rx\Tickets\Domain\Model\Ticket;
 use AutoMapperPlus\Configuration\AutoMapperConfig;
 use AutoMapperPlus\AutoMapper;
 

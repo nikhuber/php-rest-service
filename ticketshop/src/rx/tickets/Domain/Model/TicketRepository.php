@@ -6,11 +6,9 @@
  * Time: 11:20
  */
 
-namespace Rx\Tickets\Repository;
+namespace Rx\Tickets\Domain\Model;
 
-use Rx\Tickets\Entity\Ticket;
-
-interface TicketRepositoryInterface
+interface TicketRepository
 {
     public function save(Ticket $ticket);
 

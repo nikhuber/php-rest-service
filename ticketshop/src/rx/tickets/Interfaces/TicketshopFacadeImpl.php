@@ -7,18 +7,18 @@
  */
 declare(strict_types=1);
 
-namespace Rx\Tickets\Controller;
+namespace Rx\Tickets\Interfaces;
 
-use Rx\Tickets\Dto\TicketDto;
-use Rx\Tickets\TicketService;
+use Rx\Tickets\Application\TicketshopService;
+use Rx\Tickets\Interfaces\Dto\TicketDto;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class TicketController extends Controller
+class TicketshopFacadeImpl extends Controller implements TicketshopFacade
 {
 
     private $ticketService;
 
-    public function __construct(TicketService $ticketService)
+    public function __construct(TicketshopService $ticketService)
     {
         $this->ticketService = $ticketService;
     }

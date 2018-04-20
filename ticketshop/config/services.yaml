@@ -20,8 +20,8 @@ services:
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    Rx\Tickets\Controller\:
-        resource: '../src/rx/tickets/Controller'
+    Rx\Tickets\Interfaces\:
+        resource: '../src/rx/tickets/Interfaces'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed

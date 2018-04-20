@@ -7,17 +7,19 @@
  */
 declare(strict_types=1);
 
-namespace Rx\Tickets;
+namespace Rx\Tickets\Application\Impl;
 
-use Rx\Tickets\Dto\TicketDto;
-use Rx\Tickets\Repository\TicketRepositoryInterface;
+use Rx\Tickets\Application\TicketshopService;
+use Rx\Tickets\Interfaces\Dto\TicketDto;
+use Rx\Tickets\Domain\Model\TicketRepository;
+use Rx\Tickets\TicketAutoMapper;
 
-class TicketService
+class TicketshopServiceImpl implements TicketshopService
 {
     private $ticketAutoMapper;
     private $ticketRepository;
 
-    public function __construct(TicketRepositoryInterface $ticketRepository, TicketAutoMapper $ticketAutoMapper)
+    public function __construct(TicketRepository $ticketRepository, TicketAutoMapper $ticketAutoMapper)
     {
         $this->ticketRepository = $ticketRepository;
         $this->ticketAutoMapper = $ticketAutoMapper;

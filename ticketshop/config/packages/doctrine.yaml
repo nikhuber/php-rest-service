@@ -25,5 +25,5 @@ doctrine:
             App:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/rx/tickets/Entity'
-                prefix: 'Rx\Tickets\Entity'
+                dir: '%kernel.project_dir%/src/rx/tickets/Domain/Model'
+                prefix: 'Rx\Tickets\Domain\Model'

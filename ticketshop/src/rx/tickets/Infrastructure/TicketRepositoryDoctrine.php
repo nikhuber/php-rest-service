@@ -8,13 +8,14 @@
 declare(strict_types=1);
 
 
-namespace Rx\Tickets\Repository;
+namespace Rx\Tickets\Infrastructure;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use Rx\Tickets\Entity\Ticket;
+use Rx\Tickets\Domain\Model\Ticket;
+use Rx\Tickets\Domain\Model\TicketRepository;
 
-class TicketRepository extends EntityRepository implements TicketRepositoryInterface
+class TicketRepositoryDoctrine extends EntityRepository implements TicketRepository
 {
     public function __construct(EntityManagerInterface $entityManager)
     {
