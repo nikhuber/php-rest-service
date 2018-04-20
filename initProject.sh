@@ -17,6 +17,9 @@ docker run --rm -v $(pwd)/${serviceName}:/app composer composer require api-plat
 echo "### Installing AutoMapper"
 docker run --rm -v $(pwd)/${serviceName}:/app composer composer require mark-gerarts/automapper-plus-bundle
 
+echo "### Installing AutoMapper"
+docker run --rm -v $(pwd)/${serviceName}:/app composer composer require mark-gerarts/automapper-plus-bundle
+
 echo "### Preparing configuration"
 cp .env.dist .env
 sed -i'' -e s/SERVICE_ROOT_PATH=\./SERVICE_ROOT_PATH=\.\\/"${serviceName}"/g .env
