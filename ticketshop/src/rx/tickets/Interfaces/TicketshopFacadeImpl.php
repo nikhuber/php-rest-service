@@ -28,8 +28,7 @@ class TicketshopFacadeImpl extends Controller implements TicketshopFacade
 
     public function create(TicketDto $data): TicketDto
     {
-        $ticket = $this->ticketAutoMapper->getTicketEntity($data);
-        $this->ticketshopService->createTicket($ticket);
+        $ticket = $this->ticketshopService->createTicket($data->getTicketHolderName(), $data->getEventId(), $data->getEventName());
         $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
         return $ticketDto;
     }

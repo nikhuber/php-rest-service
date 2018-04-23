@@ -62,6 +62,20 @@ class Ticket
     private $ticketCode;
 
     /**
+     * Ticket constructor.
+     * @param string $ticketHolderName
+     * @param int $eventId
+     * @param string $eventName
+     */
+    public function __construct(string $ticketHolderName, int $eventId, string $eventName)
+    {
+        $this->ticketHolderName = $ticketHolderName;
+        $this->eventId = $eventId;
+        $this->eventName = $eventName;
+        $this->generateTicketCode();
+    }
+
+    /**
      * @return int
      */
     public function getEventId(): int
@@ -102,14 +116,6 @@ class Ticket
     }
 
     /**
-     * @param int $ticketCode
-     */
-    public function setTicketCode(int $ticketCode): void
-    {
-        $this->ticketCode = $ticketCode;
-    }
-
-    /**
      * @return string
      */
     public function getTicketHolderName(): string
@@ -128,6 +134,12 @@ class Ticket
     public function getTicketId(): string
     {
         return $this->ticketId;
+    }
+
+    private function generateTicketCode()
+    {
+        // Implement some fancy generation algorithm here
+        $this->ticketCode = rand(100000,999999);
     }
 
 }

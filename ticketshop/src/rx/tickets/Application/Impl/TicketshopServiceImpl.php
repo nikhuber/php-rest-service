@@ -22,9 +22,9 @@ class TicketshopServiceImpl implements TicketshopService
         $this->ticketRepository = $ticketRepository;
     }
 
-    public function createTicket(Ticket $ticket): Ticket
+    public function createTicket(string $ticketHolderName, int $eventId, string $eventName): Ticket
     {
-        $ticket->setTicketCode($this->generateTicketCode());
+        $ticket = new Ticket($ticketHolderName, $eventId, $eventName);
         $this->ticketRepository->save($ticket);
         return $ticket;
     }
@@ -34,14 +34,9 @@ class TicketshopServiceImpl implements TicketshopService
         return $this->ticketRepository->findAll();
     }
 
-    public function getTicketById(String $id): Ticket
+    public function getTicketById(string $ticketId): Ticket
     {
-        return $this->ticketRepository->findByTicketId($id);
+        return $this->ticketRepository->findByTicketId($ticketId);
     }
 
-    public function generateTicketCode(): int
-    {
-        // Implement some fancy generation algorithm here
-        return rand(100000,999999);
-    }
 }

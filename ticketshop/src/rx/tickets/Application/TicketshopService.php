@@ -12,10 +12,10 @@ use Rx\Tickets\Domain\Model\Ticket;
 
 interface TicketshopService
 {
-    public function createTicket(Ticket $ticket): Ticket;
+    public function createTicket(string $ticketHolderName, int $eventId, string $eventName): Ticket;
 
     public function getAll(): array;
 
-    public function getTicketById(String $id): Ticket;
+    public function getTicketById(string $ticketId): Ticket;
 
 }
