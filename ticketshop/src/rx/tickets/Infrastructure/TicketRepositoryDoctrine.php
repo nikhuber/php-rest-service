@@ -29,7 +29,7 @@ class TicketRepositoryDoctrine extends EntityRepository implements TicketReposit
         $this->getEntityManager()->flush();
     }
 
-    public function findByTicketId(String $id): Ticket
+    public function findByTicketId(string $id): Ticket
     {
         $ticket = $this->find($id);
         if ($ticket === NULL)

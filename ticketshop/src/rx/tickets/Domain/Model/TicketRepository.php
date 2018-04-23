@@ -14,5 +14,5 @@ interface TicketRepository
 
     public function findAll();
 
-    public function findByTicketId(String $id): Ticket;
+    public function findByTicketId(string $id): Ticket;
 }
