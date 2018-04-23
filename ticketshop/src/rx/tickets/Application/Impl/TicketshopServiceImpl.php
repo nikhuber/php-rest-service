@@ -10,41 +10,33 @@ declare(strict_types=1);
 namespace Rx\Tickets\Application\Impl;
 
 use Rx\Tickets\Application\TicketshopService;
-use Rx\Tickets\Interfaces\Dto\TicketDto;
+use Rx\Tickets\Domain\Model\Ticket;
 use Rx\Tickets\Domain\Model\TicketRepository;
-use Rx\Tickets\TicketAutoMapper;
 
 class TicketshopServiceImpl implements TicketshopService
 {
-    private $ticketAutoMapper;
     private $ticketRepository;
 
-    public function __construct(TicketRepository $ticketRepository, TicketAutoMapper $ticketAutoMapper)
+    public function __construct(TicketRepository $ticketRepository)
     {
         $this->ticketRepository = $ticketRepository;
-        $this->ticketAutoMapper = $ticketAutoMapper;
     }
 
-    public function createTicket(TicketDto $ticketDto): TicketDto
+    public function createTicket(Ticket $ticket): Ticket
     {
-        $ticket = $this->ticketAutoMapper->getTicketEntity($ticketDto);
         $ticket->setTicketCode($this->generateTicketCode());
         $this->ticketRepository->save($ticket);
-
-        $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
-        return $ticketDto;
+        return $ticket;
     }
 
-    public function getAll()
+    public function getAll(): array
     {
         return $this->ticketRepository->findAll();
     }
 
-    public function getTicketById(String $id): TicketDto
+    public function getTicketById(String $id): Ticket
     {
-        $ticket = $this->ticketRepository->findByTicketId($id);
-        $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
-        return $ticketDto;
+        return $this->ticketRepository->findByTicketId($id);
     }
 
     public function generateTicketCode(): int

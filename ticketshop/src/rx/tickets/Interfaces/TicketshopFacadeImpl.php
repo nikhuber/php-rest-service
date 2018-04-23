@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Rx\Tickets\Interfaces;
 
+use Rx\Tickets\TicketAutoMapper;
 use Rx\Tickets\Application\TicketshopService;
 use Rx\Tickets\Interfaces\Dto\TicketDto;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,26 +17,39 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class TicketshopFacadeImpl extends Controller implements TicketshopFacade
 {
 
-    private $ticketService;
+    private $ticketshopService;
+    private $ticketAutoMapper;
 
-    public function __construct(TicketshopService $ticketService)
+    public function __construct(TicketshopService $ticketService, TicketAutoMapper $ticketAutoMapper)
     {
-        $this->ticketService = $ticketService;
+        $this->ticketshopService = $ticketService;
+        $this->ticketAutoMapper = $ticketAutoMapper;
     }
 
     public function create(TicketDto $data): TicketDto
     {
-        return $this->ticketService->createTicket($data);
+        $ticket = $this->ticketAutoMapper->getTicketEntity($data);
+        $this->ticketshopService->createTicket($ticket);
+        $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
+        return $ticketDto;
     }
 
-    public function getAll()
+    public function getAll(): array
     {
-        return $this->ticketService->getAll();
+        $ticketDtoList = [];
+
+        foreach ($this->ticketshopService->getAll() as $ticket) {
+            array_push($ticketDtoList, $this->ticketAutoMapper->getTicketDto($ticket));
+        }
+
+        return $ticketDtoList;
     }
 
     public function getTicketById(String $id): TicketDto
     {
-        return $this->ticketService->getTicketById($id);
+        $ticket = $this->ticketshopService->getTicketById($id);
+        $ticketDto = $this->ticketAutoMapper->getTicketDto($ticket);
+        return $ticketDto;
     }
 
 }

@@ -15,7 +15,7 @@ interface TicketshopFacade
 {
     public function create(TicketDto $data): TicketDto;
 
-    public function getAll();
+    public function getAll(): array;
 
     public function getTicketById(String $id): TicketDto;
 }

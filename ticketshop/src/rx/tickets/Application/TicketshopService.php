@@ -8,14 +8,14 @@
 
 namespace Rx\Tickets\Application;
 
-use Rx\Tickets\Interfaces\Dto\TicketDto;
+use Rx\Tickets\Domain\Model\Ticket;
 
 interface TicketshopService
 {
-    public function createTicket(TicketDto $ticketDto): TicketDto;
+    public function createTicket(Ticket $ticket): Ticket;
 
-    public function getAll();
+    public function getAll(): array;
 
-    public function getTicketById(String $id): TicketDto;
+    public function getTicketById(String $id): Ticket;
 
 }
