@@ -63,6 +63,7 @@ class Ticket
 
     /**
      * Ticket constructor.
+     *
      * @param string $ticketHolderName
      * @param int $eventId
      * @param string $eventName
