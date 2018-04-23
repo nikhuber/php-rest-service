@@ -16,6 +16,6 @@ interface TicketshopService
 
     public function getAll(): array;
 
-    public function getTicketById(string $ticketId): Ticket;
+    public function getTicketById(string $ticketId): ?Ticket;
 
 }

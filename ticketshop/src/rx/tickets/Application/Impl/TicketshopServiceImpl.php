@@ -34,7 +34,7 @@ class TicketshopServiceImpl implements TicketshopService
         return $this->ticketRepository->findAll();
     }
 
-    public function getTicketById(string $ticketId): Ticket
+    public function getTicketById(string $ticketId): ?Ticket
     {
         return $this->ticketRepository->findByTicketId($ticketId);
     }

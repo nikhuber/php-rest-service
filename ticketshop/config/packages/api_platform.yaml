@@ -14,9 +14,10 @@ api_platform:
     collection:
         pagination:
             enabled: false
-
-
-
+    # The list of exceptions mapped to their HTTP status code.
+    exception_to_status:
+        # With a status code.
+        Rx\Tickets\Domain\Model\TicketNotFoundException: 404
 
 
 

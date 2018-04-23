@@ -13,6 +13,7 @@ namespace Rx\Tickets\Infrastructure;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Rx\Tickets\Domain\Model\Ticket;
+use Rx\Tickets\Domain\Model\TicketNotFoundException;
 use Rx\Tickets\Domain\Model\TicketRepository;
 
 class TicketRepositoryDoctrine extends EntityRepository implements TicketRepository
@@ -30,6 +31,10 @@ class TicketRepositoryDoctrine extends EntityRepository implements TicketReposit
 
     public function findByTicketId(String $id): Ticket
     {
-        return $this->find($id);
+        $ticket = $this->find($id);
+        if ($ticket === NULL)
+            throw new TicketNotFoundException(sprintf('The ticket with ID "%s" does not exist.', $id));
+
+        return $ticket;
     }
 }
