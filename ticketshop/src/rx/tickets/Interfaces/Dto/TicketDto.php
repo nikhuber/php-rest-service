@@ -14,7 +14,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * ...
  * @ApiResource(
  *      collectionOperations={
  *          "post"={
