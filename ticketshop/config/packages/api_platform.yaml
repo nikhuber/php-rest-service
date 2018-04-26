@@ -1,7 +1,8 @@
+# config/packages/api_platform.yaml
 api_platform:
     mapping:
         paths:
-        - '%kernel.project_dir%/src/rx/tickets/Interfaces/Dto'
+            - '%kernel.project_dir%/src/rx/tickets/Interfaces/Dto'
     # The list of enabled formats. The first one will be the default.
     formats:
         # Disabled json-ld to avoid coupling on data structures
