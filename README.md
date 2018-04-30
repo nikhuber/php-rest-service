@@ -1,4 +1,4 @@
-# Service Template Project
+# Example RESTful Web Service in PHP
 
 This is a project you can use as a template to create and run a new service written in PHP.
 
@@ -45,16 +45,14 @@ Now, move all classes under `/src` to your new base directory, e.g. `/src/rx/tic
 Don't forget to adjust all namespaces and usages or other references in your source code.
 
 
-## Tips:
+# Tips
 
 The following commands might help you to resolve issues:
     
     docker-compose exec php bin/console cache:clear
     docker-compose exec php bin/console debug:router
-    
-# Hints:
 
-During implementation, I faced the following issues:
+During implementation, I faced the following issues with the frameworks:
 
 - API Platform needs at least one [GET operation per resource](https://github.com/api-platform/core/issues/640) to generate route identifiers. 
 - When declaring entities and DTOs in different classes, you might want to bypass the [automatic retrieval of entities](https://api-platform.com/docs/core/operations/) (`_api_receive`).
