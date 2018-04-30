@@ -1,26 +1,23 @@
 # Service Template Project
 
-**Beware: work in progress**
-
 This is a project you can use as a template to create and run a new service written in PHP.
 
 To execute the sample service, perform the following steps:
-* Clone the project
-* Copy the `.env.dist` files and ajust the .env
+1. Clone the project
+2. Copy the `.env.dist` files (project root and `/ticketshop`) to `.env` and adjust them
+3. Build the docker containers: `docker-compose build`
+4. Create the schema: `docker-compose exec php bin/console doctrine:schema:create`
+5. Run the service: `docker-compose up -d` 
 
-## Project Initialization from Scratch
+If you want to create your own API web service, after cloning the project, to the following:
 
-1. Execute the init-script in the root folder and pass it the service name, e.g. `./initProject.sh ticketshop`
-2. Adjust the .env file in the project root to your needs
-3. Adjust the .env file in your app path (e.g., `./ticketshop`) 
-4. Build the Docker images `docker-compose build`
-5. Launch the service `docker-compose up -d`
+* execute the init-script in the root folder and pass it the service name, e.g. `./initProject.sh ticketshop`. 
+* Don't forget to check and adjust your env-files.
+* Declare your entities and implement your business logic
     
-After that, you should be able to access the service API at `http://localhost:8080/api`
+Now you should be able to access the service API at `http://localhost:8080/api`
 
-Note: The init script installs the [AutoMapper+](https://github.com/mark-gerarts/automapper-plus-bundle) bundle.
-
-## Custom Namepsace
+## Custom Namespace
 
 Maybe you want to use an individual namespace like `Rx\Tickets` for your classes instead of the default namespace `App`. 
 If you decide to use your own namespace, its name should conform to the [PSR-4 specification](https://www.php-fig.org/psr/psr-4/). 
@@ -47,10 +44,6 @@ To achieve this, perform the following steps. **Note**: the base path is your ap
 Now, move all classes under `/src` to your new base directory, e.g. `/src/rx/tickets`. 
 Don't forget to adjust all namespaces and usages or other references in your source code.
 
-## Implementation
-
-- Define entities
-- Create schema: `docker-compose exec php bin/console doctrine:schema:create`
 
 ## Tips:
 
@@ -60,5 +53,8 @@ The following commands might help you to resolve issues:
     docker-compose exec php bin/console debug:router
     
 # Hints:
-- At least one GET operation per resource https://github.com/api-platform/core/issues/640
-- disable default entity retrieval for DTOs
+
+During implementation, I faced the following issues:
+
+- API Platform needs at least one [GET operation per resource](https://github.com/api-platform/core/issues/640) to generate route identifiers. 
+- When declaring entities and DTOs in different classes, you might want to bypass the [automatic retrieval of entities](https://api-platform.com/docs/core/operations/) (`_api_receive`).
