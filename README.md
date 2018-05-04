@@ -23,9 +23,9 @@ Maybe you want to use an individual namespace like `Rx\Tickets` for your classes
 If you decide to use your own namespace, its name should conform to the [PSR-4 specification](https://www.php-fig.org/psr/psr-4/). 
 In this example, we use the following settings:
 
-| Fully Qualified Class Name    | Namespace Prefix   | Base Directory           | Resulting File Path
-| ----------------------------- |--------------------|--------------------------|-------------------------------------------
-| \Rx\Tickets\Entity\Ticket     | Rx\Tickets         | ./src/rx/tickets/        | ./src/rx/tickets/Entity/Ticket.php
+| Fully Qualified Class Name          | Namespace Prefix   | Base Directory           | Resulting File Path
+| ----------------------------------- |--------------------|--------------------------|-------------------------------------------
+| \Rx\Tickets\Domain\Model\Ticket     | Rx\Tickets         | ./src/rx/tickets/        | ./src/rx/tickets/Domain/Model/Ticket.php
 
 To achieve this, perform the following steps. **Note**: the base path is your app directory, e.g. `ticketshop/` not your project root!
 1. Add your new base directory to the autoloader configuration in the `composer.json` in the root directory:
