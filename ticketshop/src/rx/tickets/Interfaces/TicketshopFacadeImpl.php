@@ -9,10 +9,9 @@ declare(strict_types=1);
 
 namespace Rx\Tickets\Interfaces;
 
-use Rx\Tickets\Domain\Model\Ticket;
-use Rx\Tickets\Interfaces\Internal\TicketAssembler;
 use Rx\Tickets\Application\TicketshopService;
 use Rx\Tickets\Interfaces\Dto\TicketDto;
+use Rx\Tickets\Interfaces\Internal\TicketAssembler;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TicketshopFacadeImpl extends Controller implements TicketshopFacade
