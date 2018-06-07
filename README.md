@@ -35,7 +35,7 @@ To achieve this, perform the following steps. **Note**: the base path is your ap
                "Rx\\Tickets\\": "src/rx/tickets/"
            }
         }
-2. Update the autoloader `docker run --rm -v $(pwd):/app composer dump-autoload`
+2. Update the autoloader `docker run --rm -v "$(pwd)":/app composer dump-autoload`
 3. Adjust your `./config/services.yaml`. Replace `App`with your namespace prefix, e.g. `Rx\Ticket` and point to the correct paths. 
    See [services.yaml](./ticketshop/config/services.yaml) for examples.
 4. Adjust the path(s) in `./config/packages/api_platform.yaml` and `./config/routes/annotations.yaml`
