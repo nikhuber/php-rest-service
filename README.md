@@ -2,20 +2,26 @@
 
 This is a project you can use as a template to create and run a new service written in PHP.
 
+## Executing the sample service API
+
 To execute the sample service, perform the following steps:
 1. Clone the project
-2. Copy the `.env.dist` files (project root and `/ticketshop`) to `.env` and adjust them
-3. Build the docker containers: `docker-compose build`
-4. Create the schema: `docker-compose exec php bin/console doctrine:schema:create`
+2. Install dependencies: `./initProject.sh ticketshop`
+3. Adjust the `.env` files (in the project root an in `ticketshop/`) to your needs. Especially, in `ticketshop/.env`you need to specify `db` as the hostname in the database URL string.
+4. Build the docker containers: `docker-compose build`
 5. Run the service: `docker-compose up -d` 
+6. Create the schema: `docker-compose exec php bin/console doctrine:schema:create`
 
-If you want to create your own API web service, after cloning the project, to the following:
+After these steps, you should be able to access the ticketshop API at `http://localhost:8080/api`
 
-* execute the init-script in the root folder and pass it the service name, e.g. `./initProject.sh ticketshop`. 
-* Don't forget to check and adjust your env-files.
-* Declare your entities and implement your business logic
-    
-Now you should be able to access the service API at `http://localhost:8080/api`
+## Implement your own API web service
+
+If you want to create your own API web service, do the following:
+
+1. Clone the project
+2. Execute the init-script in the root folder and pass it the service name, e.g. `./initProject.sh yourname`. 
+3. Check and adjust your env-files in the project root and in the app folder (`./yourname`).
+4. Declare your entities and [implement your business logic](https://api-platform.com/docs/distribution#bringing-your-own-model).
 
 ## Custom Namespace
 
@@ -45,7 +51,7 @@ Now, move all classes under `/src` to your new base directory, e.g. `/src/rx/tic
 Don't forget to adjust all namespaces and usages or other references in your source code.
 
 
-# Tips
+## Tips
 
 The following commands might help you to resolve issues:
     
